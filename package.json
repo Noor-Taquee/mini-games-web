@@ -19,5 +19,8 @@
   "main": "main.ts",
   "scripts": {
     "test": "npm run test"
+  },
+  "devDependencies": {
+    "vite": "^8.1.3"
   }
 }
