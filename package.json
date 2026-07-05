@@ -1,0 +1,23 @@
+{
+  "name": "mini-games-web",
+  "version": "1.0.0",
+  "description": "Mini web games",
+  "keywords": [
+    "mini-games"
+  ],
+  "homepage": "https://github.com/Noor-Taquee/mini-games-web#readme",
+  "bugs": {
+    "url": "https://github.com/Noor-Taquee/mini-games-web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noor-Taquee/mini-games-web.git"
+  },
+  "license": "MIT",
+  "author": "Noor-Taquee",
+  "type": "module",
+  "main": "main.ts",
+  "scripts": {
+    "test": "npm run test"
+  }
+}
