@@ -18,7 +18,13 @@
   "type": "module",
   "main": "main.ts",
   "scripts": {
-    "test": "npm run test"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
