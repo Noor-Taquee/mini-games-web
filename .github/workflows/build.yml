@@ -2,17 +2,7 @@ name: Build
 
 on:
   pull_request:
-    branches: ["master"]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "index.html"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.json"
-      - "vite.config.ts"
-      - ".github/workflows/build.yml"
-      - ".github/workflows/deploy.yml"
+    branches: ["main"]
 
 permissions:
   contents: read

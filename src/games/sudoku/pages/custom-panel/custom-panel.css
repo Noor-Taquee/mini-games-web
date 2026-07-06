@@ -1,0 +1,64 @@
+.input-div {
+  --in-height: 55px;
+  --in-radius: 10px;
+
+  position: relative;
+  min-height: var(--in-height);
+  width: 100%;
+
+  padding: 10px;
+
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-text-color);
+  border-radius: var(--in-radius);
+
+  display: flex;
+  align-items: center;
+
+  &.wrong {
+    --primary-text-color: #da2424;
+  }
+  &.shake {
+    animation: shake 100ms ease-in-out 3;
+  }
+}
+
+#source-input-div {
+  margin: 5px auto;
+  width: 90%;
+}
+
+.input-div.selected {
+  .input-label {
+    width: fit-content;
+    padding: 0 5px;
+    transform: translateY(-25px) scale(0.8);
+  }
+}
+
+.type-input {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  outline: none;
+  border: none;
+  font: var(--secondary-text-font);
+  color: var(--primary-text-color);
+  background: transparent;
+}
+
+.input-label {
+  pointer-events: none;
+  position: absolute;
+  width: calc(100% - 10px);
+  padding: 0;
+  margin: auto 0;
+  background: var(--primary-bg);
+  font: var(--secondary-text-font);
+  color: var(--primary-text-color);
+  transform-origin: left center;
+  transition:
+    transform 200ms ease,
+    padding 200ms ease;
+}
