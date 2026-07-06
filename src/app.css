@@ -1,0 +1,96 @@
+#app {
+  position: relative;
+
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+  padding: env(safe-area-inset-top) 0 0 0;
+
+  display: flex;
+  flex-direction: column;
+  &[data-orientation="horizontal"] {
+    flex-direction: row-reverse;
+  }
+
+  background-color: var(--secondary-bg);
+}
+
+.panel-container {
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+
+  background-color: var(--primary-bg);
+}
+
+[data-orientation="horizontal"] .panel-container {
+  border-radius: 12px 0 0 12px;
+}
+
+.app-panel {
+  position: relative;
+
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel-bar {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+
+  height: fit-content;
+  width: 100%;
+
+  padding: 5px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary-bg) 30%,
+    transparent
+  );
+}
+
+.panel-name-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-name {
+  font: var(--secondary-header-font);
+  color: var(--primary-text-color);
+}
+
+.utility-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.panel-content {
+  position: relative;
+  flex-grow: 1;
+  min-height: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: 60px 0 200px;
+
+  display: flex;
+  flex-direction: column;
+}
