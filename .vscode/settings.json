@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  "files.autoSave": "off",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "js/ts.inlayHints.parameterNames.enabled": "all",
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.parameterTypes.enabled": true,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
+  "js/ts.inlayHints.variableTypes.enabled": true,
+  "js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
+  "editor.inlayHints.enabled": "on",
+  "js/ts.preferences.importModuleSpecifierEnding": "js",
+  "js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false
+}
