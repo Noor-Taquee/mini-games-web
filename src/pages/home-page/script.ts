@@ -80,7 +80,8 @@ const gameData: Record<
   },
 };
 
-for (const [key, value] of Object.entries(gameData)) {
+for (const pair of Object.entries(gameData)) {
+  const value = pair[1];
   const gameBtn = createGameCard(value.name, value.description, value.url);
   container.appendChild(gameBtn);
 }
