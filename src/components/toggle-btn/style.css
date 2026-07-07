@@ -1,0 +1,20 @@
+.toggle-btn {
+  --height: 45px;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  height: var(--height);
+  width: var(--height);
+
+  border: none;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background-color: var(--secondary-bg);
+  i {
+    color: var(--primary-text-color);
+    font-size: var(--toggle-icon-size);
+  }
+}

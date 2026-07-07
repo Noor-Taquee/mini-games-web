@@ -1,0 +1,15 @@
+{
+  "format_on_save": "on",
+  "auto_indent_on_paste": true,
+  "extend_comment_on_newline": false,
+  "tab_size": 2,
+  "remove_trailing_whitespace_on_save": true,
+  "colorize_brackets": true,
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_value_hints": true,
+    "show_other_hints": true,
+  },
+}
