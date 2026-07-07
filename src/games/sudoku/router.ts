@@ -11,14 +11,14 @@ import { settingsPanel } from "./pages/settings-panel/page.js";
 import { panelContainer } from "./app.js";
 
 type HashHandler = (attr: string[]) => void;
-type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
+type Route = Record<string, [HTMLDivElement, (Route | null)?, HashHandler?]>;
 
-const mainRoute: Route = {
+export const mainRoute: Route = {
   "": [homePanel],
-  "#home": [homePanel],
-  "#playing": [playingPanel, , practicalHH],
-  "#custom": [customPanel],
-  "#settings": [settingsPanel],
+  home: [homePanel],
+  playing: [playingPanel, null, practicalHH],
+  custom: [customPanel],
+  settings: [settingsPanel],
 };
 
 function defaultHash() {
@@ -37,7 +37,7 @@ function handle() {
   if (attributesHash.length >= 1) hashHandler(attributesHash);
 }
 
-function handleLocaton(locationString: string) {
+export function handleLocaton(locationString: string) {
   let hashHandler: undefined | HashHandler;
 
   if (!locationString) {
@@ -46,7 +46,7 @@ function handleLocaton(locationString: string) {
   }
 
   const locationStack = locationString?.split("/");
-  let parentRoute: Route | undefined = mainRoute;
+  let parentRoute: Route | null | undefined = mainRoute;
 
   locationStack.forEach((path, index) => {
     if (!parentRoute) return;

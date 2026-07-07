@@ -187,7 +187,7 @@ const startBtn = createElement(
   ],
 );
 
-startBtn.addEventListener("click", (e) => {
+startBtn.addEventListener("click", () => {
   if (!showBoard()) return;
   contentDiv.replaceChild(numpad, startBtn);
 
@@ -237,7 +237,7 @@ export function renderBoard() {
     createElement("p", { textContent: "start" }),
   );
   boardContainer.appendChild(createBoard()!);
-  difficultyValue.textContent = gameState.boardState?.difficulty!;
+  difficultyValue.textContent = gameState.boardState?.difficulty ?? null;
   calculateProgress();
 }
 document.addEventListener("render-board", renderBoard);
