@@ -1,0 +1,11 @@
+node_modules/
+
+dist/
+
+build/
+
+tsconfig.json
+package-lock.json
+package.json
+vite.config.ts
+eslint.config.js
