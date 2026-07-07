@@ -1,0 +1,94 @@
+#account-btn {
+  font-size: 1.5rem;
+  background: var(--primary-bg);
+  background-size: cover;
+}
+
+#playing-box-container {
+  height: fit-content;
+  width: 100%;
+
+  margin: 10px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.attempt-row {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.attempt-box {
+  --size: 50px;
+
+  height: var(--size);
+  aspect-ratio: 1 / 1;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+
+  &.selected {
+    border: 3px solid var(--secondary-bg);
+  }
+}
+
+.attempt-box p {
+  font: 500 25px "Nunito";
+  text-transform: uppercase;
+  color: var(--primary-text-color);
+}
+
+.attempt-box.wrong {
+  background: #afafaf50;
+  border-color: #afafaf;
+}
+
+.attempt-box.present {
+  background: #ffab2b50;
+  border-color: #ffab2b;
+}
+
+.attempt-box.correct {
+  background: #0e770050;
+  border-color: #0e7700;
+}
+
+.attempt-box:active {
+  background: #fafafa50;
+  border-color: #fafafa;
+}
+
+#resultPanel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#resultMessage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+}
