@@ -1,11 +1,10 @@
 #numpad {
   height: fit-content;
   width: 100%;
-  
+
   margin: auto 0 0;
   padding: 10px;
 
-  
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(3, 1fr);
@@ -21,9 +20,8 @@
   height: var(--height);
   width: 100%;
 
-  
   border: none;
-  border-radius: calc(var(--height)/2);
+  border-radius: calc(var(--height) / 2);
 
   background-color: var(--primary-text-color);
 

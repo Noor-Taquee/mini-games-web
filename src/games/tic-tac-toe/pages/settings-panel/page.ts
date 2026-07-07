@@ -13,23 +13,25 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-  const backBtn = createElement("button", {
+const backBtn = createElement(
+  "button",
+  {
     title: "Back",
     className: "toggle-btn",
-  }, [
-    createElement("i", { className: "ph-bold ph-caret-left" })
-  ]);
-  const panelName = createElement("p", {
-    className: "panel-name",
-    textContent: "settings",
-  });
-panelNameDiv.append( backBtn, panelName );
+  },
+  [createElement("i", { className: "ph-bold ph-caret-left" })],
+);
+const panelName = createElement("p", {
+  className: "panel-name",
+  textContent: "settings",
+});
+panelNameDiv.append(backBtn, panelName);
 
 backBtn.addEventListener("click", () => {
   window.location.hash = "#home";
 });
 
-panelBar.append( panelNameDiv );
+panelBar.append(panelNameDiv);
 //#endregion panel Bar
 
 //#region content
@@ -40,7 +42,7 @@ const appearanceSection = createElement("div", {
   className: "settings-section",
 });
 
-contentDiv.append( appearanceSection );
+contentDiv.append(appearanceSection);
 //#endregion content
 
-settingsPanel.append( panelBar, contentDiv );
+settingsPanel.append(panelBar, contentDiv);
