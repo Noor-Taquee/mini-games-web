@@ -1,0 +1,72 @@
+.game-btn {
+  overflow: hidden;
+  border: none;
+  border-radius: 24px;
+
+  display: flex;
+
+  background-color: var(--secondary-bg);
+  p {
+    font: var(--secondary-header-font);
+    color: var(--primary-text-color);
+  }
+}
+
+.game-btn-image-div {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--tertiary-bg);
+}
+
+.game-btn-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.game-btn-main-div {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-btn-info-div {
+  flex-grow: 1;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.game-btn-header {
+  width: 100%;
+  font: var(--secondary-header-font);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.game-btn-description {
+  width: 100%;
+  font: var(--primary-font);
+  text-align: left;
+}
+
+.game-btn-action-div {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-btn-play-button {
+  margin: 12px 12px 12px auto;
+}

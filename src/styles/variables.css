@@ -1,0 +1,51 @@
+/* #region MARK: Variables
+*/
+[data-orientation="vertical"] {
+  --font-scale: 1;
+  --header-scale: 1;
+  --icon-scale: 1;
+
+  --primary-font: 500 calc(20px * var(--font-scale)) "Inter", sans-serif;
+  --secondary-font: 500 calc(16px * var(--font-scale)) "Inter", sans-serif;
+
+  --primary-header-font:
+    300 calc(30px * var(--header-scale)) "Inter", sans-serif;
+  --secondary-header-font:
+    600 calc(22px * var(--header-scale)) "Inter", sans-serif;
+
+  --icon-size: calc(24px * var(--icon-scale));
+  --toggle-icon-size: calc(25px * var(--icon-scale));
+  --navigation-icon-size: calc(18px * var(--icon-scale));
+
+  --loading-icon-size: calc(40px * var(--icon-scale));
+  --loading-font-size: calc(20px * var(--font-scale));
+
+  --button-height: 60px;
+  --button-height-grid-view: 200px;
+}
+
+[data-orientation="horizontal"] {
+  --font-scale: 1;
+  --header-scale: 1;
+  --icon-scale: 1;
+
+  --primary-font: 500 calc(20px * var(--font-scale)) "Inter", sans-serif;
+  --secondary-font: 500 calc(16px * var(--font-scale)) "Inter", sans-serif;
+
+  --primary-header-font:
+    300 calc(30px * var(--header-scale)) "Inter", sans-serif;
+  --secondary-header-font:
+    300 calc(22px * var(--header-scale)) "Inter", sans-serif;
+
+  --icon-size: calc(24px * var(--icon-scale));
+  --toggle-icon-size: calc(25px * var(--icon-scale));
+  --navigation-icon-size: calc(24px * var(--icon-scale));
+
+  --loading-icon-size: calc(40px * var(--icon-scale));
+  --loading-font-size: calc(20px * var(--font-scale));
+
+  --button-height: 10vh;
+  --button-height-grid-view: 35vh;
+}
+
+/* #endregion Variables */
