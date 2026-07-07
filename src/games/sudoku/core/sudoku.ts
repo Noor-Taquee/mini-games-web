@@ -1,17 +1,7 @@
 import { createElement } from "../utils/create-dom.js";
 
 export type BoardData =
-  | "0"
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | null;
+  "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | null;
 export type BoardBox = [
   BoardData,
   BoardData,

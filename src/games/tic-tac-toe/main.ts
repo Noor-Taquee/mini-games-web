@@ -1,2 +1,4 @@
-import "./index.css";
-import "./router.js";
+import { app } from "./app.js";
+import { handleLocaton as hashHandler } from "./router.js";
+
+export { app, hashHandler };

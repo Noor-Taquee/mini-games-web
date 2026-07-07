@@ -17,15 +17,17 @@ const panelName = createElement("p", {
   textContent: "tic-tac-toe",
 });
 
-const accountBtn = createElement("button", {
-  title: "Settings",
-  id: "settings-btn",
-  className: "toggle-btn",
-}, [
-  createElement("i", { className: "ph-bold ph-gear-fine" })
-]);
+const accountBtn = createElement(
+  "button",
+  {
+    title: "Settings",
+    id: "settings-btn",
+    className: "toggle-btn",
+  },
+  [createElement("i", { className: "ph-bold ph-gear-fine" })],
+);
 
-panelBar.append( panelName, accountBtn );
+panelBar.append(panelName, accountBtn);
 //#endregion panel bar
 
 //#region content
@@ -33,30 +35,38 @@ const contentDiv = createElement("div", {
   className: "content-div",
 });
 
-const playBtn = createElement("button", {
-  id: "daily-puzzle-btn",
-  className: "action-btn",
-}, [
-  createElement("i", { className: "ph-fill ph-play" }),
-  createElement("p", { textContent: "Play" }),
-]);
+const playBtn = createElement(
+  "button",
+  {
+    id: "daily-puzzle-btn",
+    className: "action-btn",
+  },
+  [
+    createElement("i", { className: "ph-fill ph-play" }),
+    createElement("p", { textContent: "Play" }),
+  ],
+);
 playBtn.addEventListener("click", () => {
   window.location.hash = "#playing";
-  document.dispatchEvent( new Event("new-game") );
+  document.dispatchEvent(new Event("new-game"));
 });
 
-const settingsBtn = createElement("button", {
-  id: "settings-btn",
-  className: "action-btn",
-}, [
-  createElement("i", { className: "ph-fill ph-gear" }),
-  createElement("p", { textContent: "Settings" }),
-]);
+const settingsBtn = createElement(
+  "button",
+  {
+    id: "settings-btn",
+    className: "action-btn",
+  },
+  [
+    createElement("i", { className: "ph-fill ph-gear" }),
+    createElement("p", { textContent: "Settings" }),
+  ],
+);
 settingsBtn.addEventListener("click", () => {
   window.location.hash = "#settings";
 });
 
-contentDiv.append( playBtn );
+contentDiv.append(playBtn);
 //#endregion content
 
-homePanel.append( panelBar, contentDiv );
+homePanel.append(panelBar, contentDiv);
