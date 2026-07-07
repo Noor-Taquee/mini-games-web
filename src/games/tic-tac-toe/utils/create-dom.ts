@@ -1,12 +1,10 @@
-
-
 export function createElement<K extends keyof HTMLElementTagNameMap>(
-  name: K,
+  tag: K,
   props: Partial<HTMLElementTagNameMap[K]> = {},
-  nodes: Node[] = []
+  nodes: Node[] = [],
 ) {
-  const element = document.createElement( name );
-  Object.assign( element, props );
-  element.append( ...nodes );
+  const element = document.createElement(tag);
+  Object.assign(element, props);
+  element.append(...nodes);
   return element;
 }

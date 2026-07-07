@@ -9,42 +9,31 @@ import { settingsPanel } from "./pages/settings-panel/page.js";
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
 
-const mainRoute: Route = {
+export const mainRoute: Route = {
   "": [homePanel],
-  "#home": [homePanel],
-  "#playing": [playingPanel],
-  "#settings": [settingsPanel],
+  home: [homePanel],
+  playing: [playingPanel],
+  settings: [settingsPanel],
 };
 
-function defaultHash() { window.location.hash = "#home";}
-
-function handle() {
-  const hashParts = window.location.hash.split("&");
-  
-  const locationHash = hashParts[0] ?? "";
-  const attributesHash = hashParts.slice(1);
-  
-  const hashHandler: HashHandler|undefined = handleLocaton( locationHash );
-  if (!hashHandler) return;
-  
-  if (attributesHash.length >= 1)
-  hashHandler( attributesHash );
+function defaultHash() {
+  window.location.hash = "#tic-tac-toe";
 }
 
-function handleLocaton(locationString: string) {
-  let hashHandler: undefined|HashHandler;
-  
+export function handleLocaton(locationString: string) {
+  let hashHandler: undefined | HashHandler;
+
   if (!locationString) {
     defaultHash();
     return;
   }
 
   const locationStack = locationString?.split("/");
-  let parentRoute: Route|undefined = mainRoute;
-  
+  let parentRoute: Route | undefined = mainRoute;
+
   locationStack.forEach((path, index) => {
     if (!parentRoute) return;
-    
+
     const lce = parentRoute[path];
     if (!lce) {
       defaultHash();
@@ -53,8 +42,10 @@ function handleLocaton(locationString: string) {
 
     parentRoute = lce[1];
     const currentPanel = lce[0];
-    
-    if (index == 0) { hashHandler = lce[2]; }
+
+    if (index == 0) {
+      hashHandler = lce[2];
+    }
 
     if (index == locationStack.length - 1) {
       showPanel(currentPanel);
@@ -64,18 +55,9 @@ function handleLocaton(locationString: string) {
   return hashHandler;
 }
 
-function showPanel(
-  newPanel: HTMLDivElement,
-  animation = true,
-) {
+function showPanel(newPanel: HTMLDivElement, animation = true) {
   if (panelContainer.firstChild)
-  panelContainer.removeChild(panelContainer.firstChild);
+    panelContainer.removeChild(panelContainer.firstChild);
   panelContainer.appendChild(newPanel);
   if (animation) return;
 }
-
-
-
-window.addEventListener("hashchange", handle);
-
-window.addEventListener("load", handle);
