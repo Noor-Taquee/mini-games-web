@@ -4,37 +4,20 @@ import { homePanel } from "./pages/home-page/script.js";
 
 import { playingPanel } from "./pages/playing-page/script.js";
 
-// import { accountPanel } from "./pages/account-page/page.js";
-
-// import { settingsPanel } from "./pages/settings-panel/page.js";
-
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
 
-const mainRoute: Route = {
+export const mainRoute: Route = {
   "": [homePanel],
-  "#home": [homePanel],
-  "#playing": [playingPanel],
+  home: [homePanel],
+  playing: [playingPanel],
 };
 
 function defaultHash() {
-  window.location.hash = "#home";
+  window.location.hash = "#wordle";
 }
 
-function handle() {
-  const hashParts = window.location.hash.split("&");
-
-  const locationHash = hashParts[0] || "";
-  const attributesHash = hashParts.slice(1);
-
-  const hashHandler = handleLocaton(locationHash);
-
-  if (!hashHandler) return;
-
-  hashHandler(attributesHash);
-}
-
-function handleLocaton(locationS: string) {
+export function handleLocaton(locationS: string) {
   if (!locationS) {
     defaultHash();
     return;
@@ -72,6 +55,3 @@ function showPanel(panel: HTMLDivElement, animation = true) {
 
   if (animation) return;
 }
-
-window.addEventListener("hashchange", handle);
-window.addEventListener("load", handle);

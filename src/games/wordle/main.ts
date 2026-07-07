@@ -1,9 +1,7 @@
-import "./index.css";
+import "./styles/animations.css";
 
-import "./router.js";
+import { handleLocaton } from "./router.js";
 
-import { homePanel } from "./pages/home-page/script.js";
-import { playingPanel } from "./pages/playing-page/script.js";
+import { app } from "./app.js";
 
-homePanel.dataset.index = "0";
-playingPanel.dataset.index = "1";
+export { app, handleLocaton as hashHandler };
