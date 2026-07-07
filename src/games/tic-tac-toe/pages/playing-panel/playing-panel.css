@@ -1,12 +1,11 @@
-
 #playing-box {
   --box-gap: 5px;
 
   margin: auto;
-  
+
   border: none;
   outline: none;
-  
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -18,9 +17,9 @@
   --box-size: clamp(100px, 25vw, 20vh);
   height: var(--box-size);
   width: var(--box-size);
-  
+
   border: none;
-  
+
   display: grid;
   place-items: center;
   background: var(--primary-bg);
@@ -28,22 +27,36 @@
 
 .box .icon {
   font-size: 50px;
-  &.ph-x { color: red; }
-  &:not(.ph-x) { color: cyan; }
-  &.ph-x { color: #ff4d6d; }
-  &:not(.ph-x) { color: #4cc9f0; }
+  &.ph-x {
+    color: red;
+  }
+  &:not(.ph-x) {
+    color: cyan;
+  }
+  &.ph-x {
+    color: #ff4d6d;
+  }
+  &:not(.ph-x) {
+    color: #4cc9f0;
+  }
 }
 
 @keyframes expand {
-  from { scale: 0.5; }
-  to { scale: 1; }
+  from {
+    scale: 0.5;
+  }
+  to {
+    scale: 1;
+  }
 }
 .expand {
-  animation: expand 150ms cubic-bezier(.42,0,.44,1.7);
+  animation: expand 150ms cubic-bezier(0.42, 0, 0.44, 1.7);
 }
 
 @keyframes disappear {
-  to { scale: 0.5; }
+  to {
+    scale: 0.5;
+  }
 }
 .disappear {
   animation: disappear 150ms linear;
