@@ -1,31 +1,31 @@
 #keyboard {
   --key-height: 11vw;
   --key-width: 8.5vw;
-  --key-gap: calc(calc(100vw - calc(10*var(--key-width))) / 11);
-  
+  --key-gap: calc(calc(100vw - calc(10 * var(--key-width))) / 11);
+
   position: absolute;
   z-index: 1;
   inset: 10px;
-  
+
   height: fit-content;
-  
+
   margin: auto 0 0;
   padding: 10px 5px;
   padding-bottom: clamp(env(safe-area-inset-bottom), 10vw, 100%);
-  
+
   border-radius: 20px;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: calc(5px + var(--key-gap));
-  
+
   background: transparent;
 }
 
 .keyboard-row {
   width: 100%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,23 +36,23 @@
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
-  
+
   flex-shrink: 1;
   height: var(--key-height);
   width: var(--key-width);
-  
+
   border: none;
   border-radius: 5px;
-  
+
   display: grid;
   place-items: center;
-  
+
   background: var(--secondary-bg);
   box-shadow: 1px 1px 0px 0.1px gray;
   transition: all 0.2s ease-out;
-  
+
   p {
-    font: 500 20px 'Nunito';
+    font: 500 20px "Nunito";
     text-transform: uppercase;
     color: var(--primary-text-color);
   }
