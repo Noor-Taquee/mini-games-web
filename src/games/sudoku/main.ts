@@ -1,7 +1,7 @@
-import "./index.css";
+import "./styles/animations.css";
 
-import "./router.js";
+import { handleLocaton as hashHandler } from "./router.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  window.location.hash ??= "#home";
-});
+import { app } from "./app.js";
+
+export { app, hashHandler };

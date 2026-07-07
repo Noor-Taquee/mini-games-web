@@ -28,7 +28,7 @@
     "skipLibCheck": true,
     "types": ["vite/client"],
 
-    "noEmit": true,
+    "noEmit": true
   },
-  "include": ["src"],
+  "include": ["src"]
 }
