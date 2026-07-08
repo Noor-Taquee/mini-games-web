@@ -23,14 +23,14 @@ const backBtn = createElement(
     title: "Back",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-caret-left" })],
+  [createElement("i", { className: "ph-bold ph-caret-left" })]
 );
 const gameName = createElement(
   "p",
   {
     className: "panel-name",
     textContent: "guess the word",
-  },
+  }
   // [
   //   createElement("span", { textContent: "Guess" }),
   //   createElement("span", { textContent: "The" }),

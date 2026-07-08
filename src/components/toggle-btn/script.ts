@@ -12,7 +12,7 @@ export function createToggleBtn(icon: string) {
       createElement("i", {
         className: icon,
       }),
-    ],
+    ]
   );
   return btn;
 }

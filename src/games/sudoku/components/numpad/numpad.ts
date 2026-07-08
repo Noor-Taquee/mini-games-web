@@ -8,7 +8,7 @@ export const numpad = createElement("div", {
 
 function createNumpadBtn(
   content: { text?: string; icon?: string },
-  value = content.text,
+  value = content.text
 ) {
   const btn = createElement(
     "button",
@@ -19,7 +19,7 @@ function createNumpadBtn(
       content.text
         ? createElement("p", { textContent: content.text })
         : createElement("i", { className: content.icon! }),
-    ],
+    ]
   );
   btn.addEventListener("click", () => {
     document.dispatchEvent(
@@ -27,7 +27,7 @@ function createNumpadBtn(
         key: value!,
         bubbles: true,
         cancelable: true,
-      }),
+      })
     );
   });
   return btn;
@@ -38,7 +38,7 @@ const resetKey = createElement(
   {
     className: "numpad-btn num",
   },
-  [createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" })],
+  [createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" })]
 );
 
 numpad.append(
@@ -57,5 +57,5 @@ numpad.append(
   createNumpadBtn({ text: "9" }),
   createNumpadBtn({ icon: "ph-bold ph-arrow-left" }, "ArrowLeft"),
   createNumpadBtn({ icon: "ph-bold ph-arrow-down" }, "ArrowDown"),
-  createNumpadBtn({ icon: "ph-bold ph-arrow-right" }, "ArrowRight"),
+  createNumpadBtn({ icon: "ph-bold ph-arrow-right" }, "ArrowRight")
 );

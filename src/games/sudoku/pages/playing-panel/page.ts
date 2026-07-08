@@ -31,7 +31,7 @@ const backBtn = createElement(
     title: "Back",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-caret-left" })],
+  [createElement("i", { className: "ph-bold ph-caret-left" })]
 );
 const gameName = createElement("p", {
   className: "panel-name",
@@ -159,7 +159,7 @@ const progressBar = createElement(
   {
     className: "progress",
   },
-  [createElement("div", { className: "progress-fill" })],
+  [createElement("div", { className: "progress-fill" })]
 );
 
 progressDiv.append(progressHeaderDiv, progressBar);
@@ -184,7 +184,7 @@ const startBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-play" }),
     createElement("p", { textContent: "start" }),
-  ],
+  ]
 );
 
 startBtn.addEventListener("click", () => {
@@ -198,7 +198,7 @@ startBtn.addEventListener("click", () => {
       () => {
         numpad.classList.remove("anim-slide-in-bottom");
       },
-      { once: true },
+      { once: true }
     );
   });
 });
@@ -220,7 +220,7 @@ export function prepareBoard() {
   startBtn.innerHTML = "";
   startBtn.append(
     createElement("i", { className: "ph-bold ph-circle-notch spin" }),
-    createElement("p", { textContent: "loading" }),
+    createElement("p", { textContent: "loading" })
   );
 }
 document.addEventListener("prepare-board", prepareBoard);
@@ -234,7 +234,7 @@ export function renderBoard() {
   startBtn.innerHTML = "";
   startBtn.append(
     createElement("i", { className: "ph-fill ph-play" }),
-    createElement("p", { textContent: "start" }),
+    createElement("p", { textContent: "start" })
   );
   boardContainer.appendChild(createBoard()!);
   difficultyValue.textContent = gameState.boardState?.difficulty ?? null;
@@ -277,7 +277,7 @@ document.addEventListener("show-board-error", () => {
   startBtn.innerHTML = "";
   startBtn.append(
     createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" }),
-    createElement("p", { textContent: "retry" }),
+    createElement("p", { textContent: "retry" })
   );
   startBtn.addEventListener(
     "click",
@@ -286,7 +286,7 @@ document.addEventListener("show-board-error", () => {
 
       document.dispatchEvent(new Event("retry-board-api"));
     },
-    { once: true },
+    { once: true }
   );
 });
 
@@ -323,7 +323,7 @@ export function hashHandler(attr: string[]) {
           message: "The puzzle is not valid.",
           retry: false,
         },
-      }),
+      })
     );
     return;
   }

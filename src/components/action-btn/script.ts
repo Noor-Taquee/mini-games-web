@@ -15,7 +15,7 @@ export function createActionBtn(icon: string, text: string) {
       createElement("p", {
         textContent: text,
       }),
-    ],
+    ]
   );
   return btn;
 }

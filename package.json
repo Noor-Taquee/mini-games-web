@@ -21,10 +21,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
+    
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    
     "test": "vitest"
   },
   "devDependencies": {
