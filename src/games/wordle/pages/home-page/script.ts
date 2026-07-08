@@ -37,7 +37,7 @@ const playBtn = createElement(
     createElement("p", {
       textContent: "play",
     }),
-  ],
+  ]
 );
 playBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("new-game"));

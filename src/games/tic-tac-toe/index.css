@@ -1,4 +1,3 @@
-
 :root {
   --toggle-size: 45px;
   --medium-icon: 24px;
@@ -13,11 +12,13 @@
 }
 
 * {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -40,7 +41,8 @@ html, body {
   display: flex;
 }
 
-i, p {
+i,
+p {
   color: var(--primary-text-color);
 }
 
@@ -48,7 +50,7 @@ i, p {
   flex-shrink: 0;
   height: 100%;
   width: 100%;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,19 +58,19 @@ i, p {
 
 .panel-bar {
   position: relative;
-  
+
   height: fit-content;
   width: 100%;
-  
+
   padding: 10px 15px;
   border: none;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: auto 0 0;
     margin: 0 auto;
@@ -105,14 +107,16 @@ i, p {
 .toggle-btn {
   height: var(--toggle-size);
   width: var(--toggle-size);
-  
+
   border: none;
   border-radius: 50%;
-  
+
   display: grid;
   place-items: center;
-  
+
   background-color: var(--secondary-bg);
-  
-  i { font-size: var(--medium-icon); }
+
+  i {
+    font-size: var(--medium-icon);
+  }
 }

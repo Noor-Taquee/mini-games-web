@@ -50,7 +50,7 @@ export const gameState: {
 export function createSourceBoard(sourceString: string) {
   const boxes: BoardBox[] = Array.from(
     { length: 9 },
-    () => [] as unknown as BoardBox,
+    () => [] as unknown as BoardBox
   );
 
   for (let i = 0; i < 81; i++) {
@@ -106,7 +106,7 @@ export function createBoard(): HTMLDivElement | undefined {
           createElement("span", {
             textContent: String(data ? data : ""),
           }),
-        ],
+        ]
       );
       entry.dataset.box = String(boxNum);
       entry.dataset.row = String(globalRow);
@@ -129,7 +129,7 @@ export function showBoard(): boolean {
   if (!board) return false;
 
   const boardEntry = board.querySelector<HTMLDivElement>(
-    ".board-entry.read-only",
+    ".board-entry.read-only"
   );
   board.classList.add("revealing-first-half");
   boardEntry?.addEventListener(
@@ -146,10 +146,10 @@ export function showBoard(): boolean {
           board.classList.remove("revealing-second-half");
           document.dispatchEvent(new Event("game-started"));
         },
-        { once: true },
+        { once: true }
       );
     },
-    { once: true },
+    { once: true }
   );
 
   return true;
@@ -162,7 +162,7 @@ export function highlightImpact(entry: HTMLDivElement) {
   const board = document.getElementById("current-board") as HTMLDivElement;
   board
     ?.querySelectorAll<HTMLDivElement>(
-      `.box-${position.box}, .row-${position.row}, .col-${position.col}`,
+      `.box-${position.box}, .row-${position.row}, .col-${position.col}`
     )
     .forEach((div) => {
       div.classList.add("impact");
@@ -187,7 +187,7 @@ export function changeFocusTo(row: number, col: number, addImpact = true) {
   });
 
   const focusedBox = board.querySelector<HTMLDivElement>(
-    `.board-entry.row-${row}.col-${col}`,
+    `.board-entry.row-${row}.col-${col}`
   );
   if (!focusedBox) return;
   focusedBox.classList.add("focused");
@@ -272,7 +272,7 @@ export function checkEntry(entry: HTMLDivElement, force = true) {
 
   const board = document.getElementById("current-board") as HTMLDivElement;
   const impactZone = board.querySelectorAll<HTMLDivElement>(
-    `.box-${position.box}, .row-${position.row}, .col-${position.col}`,
+    `.box-${position.box}, .row-${position.row}, .col-${position.col}`
   );
   impactZone.forEach((impactEntry) => {
     if (impactEntry == entry) return;
@@ -314,7 +314,7 @@ function showProgress(progress: number) {
       detail: {
         progress: progress,
       },
-    }),
+    })
   );
 }
 
