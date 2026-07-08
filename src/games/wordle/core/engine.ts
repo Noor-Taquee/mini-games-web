@@ -45,7 +45,7 @@ function createAttemptPanel() {
           id: `box-${column}`,
           className: `attempt-box col-${column}`,
         },
-        [createElement("p")],
+        [createElement("p")]
       );
 
       attemptBox.dataset.row = String(row);
@@ -58,7 +58,7 @@ function createAttemptPanel() {
   }
 
   const box = container.querySelector(
-    `#row-${gameState.playerCurrentPosition.row} #box-${gameState.playerCurrentPosition.col}`,
+    `#row-${gameState.playerCurrentPosition.row} #box-${gameState.playerCurrentPosition.col}`
   );
   box?.classList.add("selected");
 }
@@ -120,7 +120,7 @@ function moveFocus(direction: number) {
   }
 
   const box = attemptBoxFrame.querySelector(
-    `#row-${gameState.playerCurrentPosition.row} #box-${gameState.playerCurrentPosition.col}`,
+    `#row-${gameState.playerCurrentPosition.row} #box-${gameState.playerCurrentPosition.col}`
   );
   box?.classList.add("selected");
 }
@@ -164,7 +164,7 @@ async function handleEnter(row = gameState.playerCurrentPosition.row) {
             col: i + 1,
           },
         },
-      }),
+      })
     );
   }
 
@@ -186,7 +186,7 @@ document.addEventListener("entry-report", (ev) => {
   if (!row) return;
 
   const box = row.querySelector<HTMLDivElement>(
-    `.col-${e.detail.position.col}`,
+    `.col-${e.detail.position.col}`
   );
   if (!box) return;
 
@@ -208,10 +208,10 @@ document.addEventListener("entry-report", (ev) => {
           box.style.animationDelay = "0ms";
           box.classList.remove("flip-second-half");
         },
-        { once: true },
+        { once: true }
       );
     },
-    { once: true },
+    { once: true }
   );
 });
 
