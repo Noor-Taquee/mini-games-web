@@ -1,7 +1,7 @@
 import { createElement } from "./utils/create-dom.js";
 
 export const app = createElement("div", {
-  id: "app-panel",
+  className: "app-panel",
 });
 
 export const panelContainer = createElement("div", {
