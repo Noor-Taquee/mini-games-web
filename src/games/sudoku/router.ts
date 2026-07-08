@@ -22,19 +22,7 @@ export const mainRoute: Route = {
 };
 
 function defaultHash() {
-  window.location.hash = "#home";
-}
-
-function handle() {
-  const hashParts = window.location.hash.split("&");
-
-  const locationHash = hashParts[0] ?? "";
-  const attributesHash = hashParts.slice(1);
-
-  const hashHandler: HashHandler | undefined = handleLocaton(locationHash);
-  if (!hashHandler) return;
-
-  if (attributesHash.length >= 1) hashHandler(attributesHash);
+  window.location.hash = "#sudoku";
 }
 
 export function handleLocaton(locationString: string) {
@@ -78,7 +66,3 @@ function showPanel(newPanel: HTMLDivElement, animation = true) {
   panelContainer.appendChild(newPanel);
   if (animation) return;
 }
-
-window.addEventListener("hashchange", handle);
-
-window.addEventListener("load", handle);
