@@ -2,7 +2,7 @@
 export function createElement<K extends keyof HTMLElementTagNameMap>(
   elementName: K,
   properties: Partial<HTMLElementTagNameMap[K]> = {},
-  nodes: (string | Node)[] = [],
+  nodes: (string | Node)[] = []
 ) {
   const element = document.createElement(elementName);
   Object.assign(element, properties);

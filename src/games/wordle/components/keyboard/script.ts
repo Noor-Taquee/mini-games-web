@@ -21,7 +21,7 @@ keysLayout.forEach((keysRow) => {
       {
         className: "key",
       },
-      [createElement("p", { textContent: label })],
+      [createElement("p", { textContent: label })]
     );
     key.addEventListener("click", () => {
       document.dispatchEvent(
@@ -29,7 +29,7 @@ keysLayout.forEach((keysRow) => {
           key: label,
           bubbles: true,
           cancelable: true,
-        }),
+        })
       );
     });
 
@@ -45,7 +45,7 @@ const deleteBtn = createElement(
   {
     className: "key action",
   },
-  [createElement("i", { className: "ph-bold ph-backspace" })],
+  [createElement("i", { className: "ph-bold ph-backspace" })]
 );
 deleteBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("delete-letter"));
@@ -56,7 +56,7 @@ const enterBtn = createElement(
   {
     className: "key action",
   },
-  [createElement("i", { className: "ph-bold ph-key-return" })],
+  [createElement("i", { className: "ph-bold ph-key-return" })]
 );
 enterBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("enter-attempt"));

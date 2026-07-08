@@ -22,7 +22,7 @@ const backBtn = createElement(
     title: "Back",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-caret-left" })],
+  [createElement("i", { className: "ph-bold ph-caret-left" })]
 );
 const panelName = createElement("p", {
   className: "panel-name",
@@ -44,13 +44,13 @@ const undoBtn = createElement(
     title: "Undo",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-arrow-arc-left" })],
+  [createElement("i", { className: "ph-bold ph-arrow-arc-left" })]
 );
 undoBtn.addEventListener("click", () => {
   if (!gameState.boardState || gameState.boardState.history.length <= 0) return;
 
   const box = playingBox.querySelector<HTMLDivElement>(
-    `#${gameState.boardState.history.pop()}`,
+    `#${gameState.boardState.history.pop()}`
   );
   if (!box) return;
   emptyBox(box);
@@ -63,7 +63,7 @@ const replayBtn = createElement(
     title: "Reset",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" })],
+  [createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" })]
 );
 replayBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("reset-game"));
@@ -122,7 +122,7 @@ function emptyBox(box: HTMLDivElement, delay = 0) {
       icon.style.animationDelay = "0";
       icon.classList.remove("disappear");
     },
-    { once: true },
+    { once: true }
   );
 }
 

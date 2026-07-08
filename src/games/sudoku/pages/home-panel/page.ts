@@ -25,7 +25,7 @@ const accountBtn = createElement(
     id: "settings-btn",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-user" })],
+  [createElement("i", { className: "ph-bold ph-user" })]
 );
 
 panelBar.append(gameName, accountBtn);
@@ -45,7 +45,7 @@ const playBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-play" }),
     createElement("p", { textContent: "Play" }),
-  ],
+  ]
 );
 playBtn.addEventListener("click", fetchPuzzle);
 
@@ -89,7 +89,7 @@ const customBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-note-pencil" }),
     createElement("p", { textContent: "Custom" }),
-  ],
+  ]
 );
 customBtn.addEventListener("click", () => {
   window.location.hash = "#custom";
@@ -104,7 +104,7 @@ const settingsBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-gear" }),
     createElement("p", { textContent: "Settings" }),
-  ],
+  ]
 );
 settingsBtn.addEventListener("click", () => {
   window.location.hash = "#settings";

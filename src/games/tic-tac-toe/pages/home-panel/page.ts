@@ -24,7 +24,7 @@ const accountBtn = createElement(
     id: "settings-btn",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-gear-fine" })],
+  [createElement("i", { className: "ph-bold ph-gear-fine" })]
 );
 
 panelBar.append(panelName, accountBtn);
@@ -44,7 +44,7 @@ const playBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-play" }),
     createElement("p", { textContent: "Play" }),
-  ],
+  ]
 );
 playBtn.addEventListener("click", () => {
   window.location.hash = "#playing";
@@ -60,7 +60,7 @@ const settingsBtn = createElement(
   [
     createElement("i", { className: "ph-fill ph-gear" }),
     createElement("p", { textContent: "Settings" }),
-  ],
+  ]
 );
 settingsBtn.addEventListener("click", () => {
   window.location.hash = "#settings";

@@ -1,6 +1,6 @@
 export function modifyInputDiv(
   input: HTMLInputElement | HTMLTextAreaElement,
-  div: HTMLDivElement,
+  div: HTMLDivElement
 ) {
   checkInput(input, div);
 
@@ -21,7 +21,7 @@ export function modifyInputDiv(
 
 export function checkInput(
   input: HTMLInputElement | HTMLTextAreaElement,
-  div: HTMLDivElement,
+  div: HTMLDivElement
 ) {
   if (input.value.length > 0) div.classList.add("selected");
 }
