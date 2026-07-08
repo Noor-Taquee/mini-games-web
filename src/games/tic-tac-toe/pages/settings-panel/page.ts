@@ -19,7 +19,7 @@ const backBtn = createElement(
     title: "Back",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-caret-left" })],
+  [createElement("i", { className: "ph-bold ph-caret-left" })]
 );
 const panelName = createElement("p", {
   className: "panel-name",

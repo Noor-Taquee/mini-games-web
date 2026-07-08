@@ -24,7 +24,7 @@ const backBtn = createElement(
     title: "Back",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-caret-left" })],
+  [createElement("i", { className: "ph-bold ph-caret-left" })]
 );
 const gameName = createElement("p", {
   className: "panel-name",
@@ -42,7 +42,7 @@ const helpBtn = createElement(
     title: "Help",
     className: "toggle-btn",
   },
-  [createElement("i", { className: "ph-bold ph-question-mark" })],
+  [createElement("i", { className: "ph-bold ph-question-mark" })]
 );
 
 panelBar.append(panelNameDiv, helpBtn);
@@ -80,7 +80,7 @@ const createBtn = createElement(
   [
     createElement("p", { textContent: "Next" }),
     createElement("i", { className: "ph-bold ph-arrow-right" }),
-  ],
+  ]
 );
 
 createBtn.addEventListener("click", () => {
@@ -93,7 +93,7 @@ createBtn.addEventListener("click", () => {
       () => {
         sourceInputDiv.classList.remove("shake");
       },
-      { once: true },
+      { once: true }
     );
     return;
   }
