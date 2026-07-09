@@ -1,7 +1,8 @@
 import "./custom-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { modifyInputDiv } from "../../utils/UI/input.js";
+
+import { modifyInputDiv } from "../../components/material-input/input.js";
 
 import { createSourceBoard, gameState } from "../../core/sudoku.js";
 
