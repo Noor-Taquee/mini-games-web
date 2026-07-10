@@ -77,8 +77,8 @@ panelBar.append(panelNameDiv, utilityDiv);
 //#endregion panel Bar
 
 //#region content
-const contentDiv = createElement("div", {
-  className: "content-div",
+const panelContent = createElement("div", {
+  className: "panel-content",
 });
 
 export const playingBox = createElement("div", {
@@ -148,10 +148,10 @@ function resetBoard2() {
   });
 }
 
-contentDiv.append(playingBox);
+panelContent.append(playingBox);
 //#endregion content
 
-playingPanel.append(panelBar, contentDiv);
+playingPanel.append(panelBar, panelContent);
 
 document.addEventListener("reset-game", () => {
   if (!gameState.boardState) return;
