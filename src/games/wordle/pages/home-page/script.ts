@@ -22,8 +22,8 @@ panelNameDiv.append(panelName);
 panelBar.append(panelNameDiv);
 
 //#region content
-const contentDiv = createElement("div", {
-  className: "content-div",
+const panelContent = createElement("div", {
+  className: "panel-content",
 });
 
 const playBtn = createElement(
@@ -44,7 +44,7 @@ playBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("new-game"));
   changeHash("playing");
 });
-contentDiv.append(playBtn);
+panelContent.append(playBtn);
 //#endregion content
 
-homePanel.append(panelBar, contentDiv);
+homePanel.append(panelBar, panelContent);
