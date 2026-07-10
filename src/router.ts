@@ -1,3 +1,5 @@
+import { changeHash } from "./utils/event.js";
+
 import { panelContainer } from "./app";
 
 import { panel as homePanel } from "./pages/home-page/script";
@@ -19,7 +21,7 @@ const mainRoute: Route = {
 };
 
 function defaultHash() {
-  window.location.hash = "#home";
+  changeHash("home");
 }
 
 function handle() {
