@@ -1,4 +1,5 @@
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../utils/event.js";
 
 export const homePanel = createElement("div", {
   id: "home-panel",
@@ -41,7 +42,7 @@ const playBtn = createElement(
 );
 playBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("new-game"));
-  window.location.hash = "#playing";
+  changeHash("playing");
 });
 contentDiv.append(playBtn);
 //#endregion content
