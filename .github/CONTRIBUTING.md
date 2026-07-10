@@ -22,7 +22,7 @@ cd mini-games-web
 ```bash
 git checkout main
 git pull origin main
-git checkout -b feature/<your-change>
+git checkout -b <your-username>/<feature or change>
 ```
 
 - Install dependencies
