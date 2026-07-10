@@ -1,6 +1,8 @@
 import "./style.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../utils/event.js";
+
 import { attemptBoxFrame } from "../../core/engine.js";
 import { keyboard } from "../../components/keyboard/script.js";
 
@@ -40,7 +42,7 @@ const gameName = createElement(
 panelNameDiv.append(backBtn, gameName);
 
 backBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
+  changeHash("home");
 });
 
 const accountBtn = createElement("button", {
@@ -49,7 +51,7 @@ const accountBtn = createElement("button", {
   className: "toggle-btn",
 });
 accountBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
+  changeHash("home");
 });
 
 panelBar.append(panelNameDiv, accountBtn);
