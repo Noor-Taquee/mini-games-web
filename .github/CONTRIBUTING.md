@@ -49,8 +49,8 @@ npm run preview
 - Format and lint your code before committing.
 
 ```bash
-npm run format
-npm run lint
+npm run format:check
+npm run lint:check
 ```
 
 - Open a pull request with a clear description of the change.
