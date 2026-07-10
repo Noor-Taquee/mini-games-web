@@ -1,6 +1,7 @@
 import "./playing-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../utils/event.js";
 
 import { numpad } from "../../components/numpad/numpad.js";
 import {
@@ -39,9 +40,7 @@ const gameName = createElement("p", {
 });
 panelNameDiv.append(backBtn, gameName);
 
-backBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
-});
+backBtn.addEventListener("click", () => changeHash("home"));
 
 const timerDiv = createElement("div", {
   className: "timer-div",
@@ -211,8 +210,8 @@ playingPanel.append(panelBar, contentDiv);
 // MARK: Prepare Board
 export function prepareBoard() {
   clearBoard();
-  if (!window.location.hash.startsWith("#playing")) {
-    window.location.hash = "#playing";
+  if (!window.location.hash.startsWith("#sudoku/playing")) {
+    changeHash("playing");
   }
 
   boardContainer.classList.add("scan-loading");
@@ -310,7 +309,7 @@ export function hashHandler(attr: string[]) {
 
   if (!puzzle) {
     if (infoPresent) {
-      window.location.hash = "#home";
+      changeHash("home");
     }
     return;
   }
