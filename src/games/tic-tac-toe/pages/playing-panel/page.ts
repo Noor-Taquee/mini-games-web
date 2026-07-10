@@ -1,6 +1,8 @@
 import "./playing-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../utils/event.js";
+
 import { gameState } from "../../core/handler.js";
 
 export const playingPanel = createElement("div", {
@@ -31,7 +33,7 @@ const panelName = createElement("p", {
 panelNameDiv.append(backBtn, panelName);
 
 backBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
+  changeHash("home");
 });
 
 const utilityDiv = createElement("div", {

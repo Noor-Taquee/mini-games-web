@@ -1,6 +1,7 @@
 import "./home-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../utils/event";
 
 export const homePanel = createElement("div", {
   id: "home-panel",
@@ -47,7 +48,7 @@ const playBtn = createElement(
   ]
 );
 playBtn.addEventListener("click", () => {
-  window.location.hash = "#playing";
+  changeHash("playing");
   document.dispatchEvent(new Event("new-game"));
 });
 
@@ -63,7 +64,7 @@ const settingsBtn = createElement(
   ]
 );
 settingsBtn.addEventListener("click", () => {
-  window.location.hash = "#settings";
+  changeHash("settings");
 });
 
 contentDiv.append(playBtn);
