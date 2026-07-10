@@ -5,6 +5,7 @@ import { homePanel } from "./pages/home-panel/page.js";
 import { playingPanel } from "./pages/playing-panel/page.js";
 
 import { settingsPanel } from "./pages/settings-panel/page.js";
+import { changeHash } from "./utils/event.js";
 
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
@@ -17,7 +18,7 @@ export const mainRoute: Route = {
 };
 
 function defaultHash() {
-  window.location.hash = "#tic-tac-toe";
+  changeHash("home");
 }
 
 export function handleLocaton(locationString: string) {
