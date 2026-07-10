@@ -3,6 +3,7 @@ import { panelContainer } from "./app.js";
 import { homePanel } from "./pages/home-page/script.js";
 
 import { playingPanel } from "./pages/playing-page/script.js";
+import { changeHash } from "./utils/event.js";
 
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
@@ -13,9 +14,7 @@ export const mainRoute: Route = {
   playing: [playingPanel],
 };
 
-function defaultHash() {
-  window.location.hash = "#wordle";
-}
+const defaultHash = () => changeHash("home");
 
 export function handleLocaton(locationS: string) {
   if (!locationS) {

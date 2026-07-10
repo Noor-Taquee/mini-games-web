@@ -24,4 +24,4 @@ jobs:
         run: npm ci
 
       - name: Check formatting
-        run: npx prettier --check "src/**/*.{js,ts,json,css}"
+        run: npm run format:check

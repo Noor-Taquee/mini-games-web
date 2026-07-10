@@ -21,13 +21,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write .",
-    
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    
+
+    "format:check": "prettier --check src/",
+    "format:fix": "prettier --write src/",
+
+    "lint:check": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+
     "test": "vitest"
   },
   "devDependencies": {

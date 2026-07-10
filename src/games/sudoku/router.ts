@@ -9,6 +9,7 @@ import { customPanel } from "./pages/custom-panel/page.js";
 
 import { settingsPanel } from "./pages/settings-panel/page.js";
 import { panelContainer } from "./app.js";
+import { changeHash } from "./utils/event.js";
 
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, (Route | null)?, HashHandler?]>;
@@ -21,9 +22,7 @@ export const mainRoute: Route = {
   settings: [settingsPanel],
 };
 
-function defaultHash() {
-  window.location.hash = "#sudoku";
-}
+const defaultHash = () => changeHash("home");
 
 export function handleLocaton(locationString: string) {
   let hashHandler: undefined | HashHandler;

@@ -1,7 +1,9 @@
 import "./custom-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { modifyInputDiv } from "../../utils/UI/input.js";
+import { changeHash } from "../../utils/event.js";
+
+import { modifyInputDiv } from "../../components/material-input/input.js";
 
 import { createSourceBoard, gameState } from "../../core/sudoku.js";
 
@@ -32,9 +34,7 @@ const gameName = createElement("p", {
 });
 panelNameDiv.append(backBtn, gameName);
 
-backBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
-});
+backBtn.addEventListener("click", () => changeHash("home"));
 
 const helpBtn = createElement(
   "button",
