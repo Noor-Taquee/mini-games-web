@@ -2,6 +2,7 @@ import "./home-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
 import { dosukuApi, type DosukuData } from "../../api/dosuku.js";
+import { changeHash } from "../../utils/event";
 
 export const homePanel = createElement("div", {
   id: "home-panel",
@@ -71,9 +72,11 @@ async function fetchPuzzle() {
 
     const sourcePuzzle = source.value.flat().join("");
 
-    window.location.hash = `#playing&puzzle=${sourcePuzzle}&difficulty=${source.difficulty}`;
-  } catch (er: any) {
-    if (er.name == "AbortError") return;
+    changeHash(
+      `playing&puzzle=${sourcePuzzle}&difficulty=${source.difficulty}`
+    );
+  } catch (er: unknown) {
+    if (er instanceof Error && er.name == "AbortError") return;
     document.dispatchEvent(new CustomEvent("show-board-error"));
   }
 }
@@ -91,9 +94,7 @@ const customBtn = createElement(
     createElement("p", { textContent: "Custom" }),
   ]
 );
-customBtn.addEventListener("click", () => {
-  window.location.hash = "#custom";
-});
+customBtn.addEventListener("click", () => changeHash("custom"));
 
 const settingsBtn = createElement(
   "button",
@@ -106,9 +107,7 @@ const settingsBtn = createElement(
     createElement("p", { textContent: "Settings" }),
   ]
 );
-settingsBtn.addEventListener("click", () => {
-  window.location.hash = "#settings";
-});
+settingsBtn.addEventListener("click", () => changeHash("settings"));
 
 contentDiv.append(playBtn, customBtn);
 //#endregion content

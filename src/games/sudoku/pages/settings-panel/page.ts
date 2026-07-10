@@ -1,4 +1,5 @@
 import { createElement } from "../../utils/create-dom.js";
+import { changeHash } from "../../../sudoku/utils/event.js";
 
 export const settingsPanel = createElement("div", {
   id: "settings-panel",
@@ -28,7 +29,7 @@ const panelName = createElement("p", {
 panelNameDiv.append(backBtn, panelName);
 
 backBtn.addEventListener("click", () => {
-  window.location.hash = "#home";
+  changeHash("home");
 });
 
 panelBar.append(panelNameDiv);
