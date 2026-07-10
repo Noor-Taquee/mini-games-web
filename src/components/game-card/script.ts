@@ -2,6 +2,7 @@ import "./style.css";
 
 import { createElement } from "../../utils/create-dom";
 import { createActionBtn } from "../action-btn/script";
+import { changeHash } from "../../utils/event.js";
 
 export function createGameCard(name: string, description: string, url: string) {
   const gameCard = createElement("div", {
@@ -41,7 +42,7 @@ export function createGameCard(name: string, description: string, url: string) {
   playButton.classList.add("game-btn-play-button");
   actionDiv.append(playButton);
   playButton.addEventListener("click", () => {
-    window.location.hash = url;
+    changeHash(url);
   });
 
   mainDiv.append(infoDiv, actionDiv);
