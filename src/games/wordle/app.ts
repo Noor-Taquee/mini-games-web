@@ -6,7 +6,7 @@ export const app = createElement("div", {
 });
 
 export const panelContainer = createElement("div", {
-  className: "tab-container",
+  className: "panel-container",
 });
 
 app.append(panelContainer);
