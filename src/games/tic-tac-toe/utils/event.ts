@@ -1,7 +1,7 @@
 import { app } from "../app";
 
 export function changeHash(newHash: string) {
-  window.location.hash = `#tictactoe/${newHash}`;
+  window.location.hash = `#tic-tac-toe/${newHash}`;
 }
 
 export function changeRoute(newRoute: string): void {
