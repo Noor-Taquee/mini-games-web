@@ -58,9 +58,11 @@ panelBar.append(panelNameDiv, accountBtn);
 //#endregion top bar
 
 //#region content
-const content = createElement("div", { className: "content-div" });
+const panelContent = createElement("div", {
+  className: "panel-content",
+});
 
-content.append(attemptBoxFrame, keyboard);
+panelContent.append(attemptBoxFrame, keyboard);
 //#endregion content
 
-playingPanel.append(panelBar, content);
+playingPanel.append(panelBar, panelContent);
