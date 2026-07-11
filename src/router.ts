@@ -6,28 +6,24 @@ import { panel as homePanel } from "./pages/home-page/script";
 
 import {
   app as sudokuPanel,
-  hashHandler as sudokuHashHandler,
+  mainRoute as sudokuRoute,
 } from "./games/sudoku/main.js";
 
 import {
   app as wordlePanel,
-  hashHandler as wordleHashHandler,
+  mainRoute as wordleRoute,
 } from "./games/wordle/main.js";
 
 import {
   app as ticTacToePanel,
-  hashHandler as ticTacToeHashHandler,
+  mainRoute as ticTacToeRoute,
 } from "./games/tic-tac-toe/main.js";
-
-type ImportedHashHandler = (attr: string) => void;
-type ImportedRoute = Record<string, [HTMLDivElement, ImportedHashHandler?]>;
 
 type HashHandler = (attr: string[]) => void;
 
-type Route = Record<
-  string,
-  [HTMLDivElement, (Route | null)?, hashHandler?: HashHandler]
->;
+type RouteInfo = [HTMLDivElement, (Route | null)?, HashHandler?];
+
+type Route = Record<string, RouteInfo>;
 
 const homeRoute: Route = {
   "": [homePanel],
@@ -36,12 +32,9 @@ const homeRoute: Route = {
 const mainRoute: Route = {
   "": [homePanel, homeRoute],
   home: [homePanel, homeRoute],
-};
-
-const importedRoute: ImportedRoute = {
-  sudoku: [sudokuPanel, sudokuHashHandler],
-  wordle: [wordlePanel, wordleHashHandler],
-  "tic-tac-toe": [ticTacToePanel, ticTacToeHashHandler],
+  sudoku: [sudokuPanel, sudokuRoute],
+  wordle: [wordlePanel, wordleRoute],
+  "tic-tac-toe": [ticTacToePanel, ticTacToeRoute],
 };
 
 function defaultHash() {
@@ -57,63 +50,51 @@ function handle(hash: string) {
 
   const locationHash = hashParts[0] ?? "";
 
-  const fun = handleLocaton(locationHash);
+  const response = handleLocaton(locationHash);
 
-  if (!fun) return;
-
-  const attributesHash = hashParts.slice(1);
-  if (attributesHash.length >= 1) fun(attributesHash);
-}
-
-function handleLocaton(locationString: string) {
-  let resolved = false;
-
-  let fun: undefined | null | HashHandler;
-
-  if (locationString.length == 0) {
+  if (!response) {
     defaultHash();
     return;
   }
 
-  const location = locationString.split("/");
+  showPanel(response.targetPanel);
 
+  if (!response.hashHandler) return;
+
+  const attributesHash = hashParts.slice(1);
+  if (attributesHash.length >= 1) response.hashHandler(attributesHash);
+}
+
+/**
+ * Handles the location hash and routes the user to the appropriate panel.
+ * The panel & hash handler associated with the last path segment is returned.
+ * @param locationString - The location string to handle. values separated by `/`.
+ * Uses the parent route to resolve the next path segment.
+ * Does this recursively to reach the required depth.
+ * Once the last path segment is reached, the panel & hash handler are returned.
+ */
+function handleLocaton(locationString: string) {
+  const locationStack = locationString.split("/");
+
+  /** The current route being resolved. */
   let parentRoute: Route | undefined | null = mainRoute;
 
-  location.forEach((path, index) => {
-    if (resolved || !parentRoute) return;
+  for (const [index, path] of locationStack.entries()) {
+    if (!parentRoute) return;
 
-    const lce = parentRoute[path];
+    const routeInfo: RouteInfo | undefined = parentRoute[path];
 
-    if (!lce) {
-      if (index == 0) {
-        const info = importedRoute[path];
-        if (info) {
-          showPanel(info[0]);
+    if (!routeInfo) return;
 
-          const newPath = location.slice(1).join("/") || "home";
-          const handler = info[1];
-          if (handler) handler(newPath);
+    parentRoute = routeInfo[1];
 
-          resolved = true;
-          return;
-        }
-      }
-
-      defaultHash();
-      return;
+    if (index == locationStack.length - 1) {
+      return {
+        targetPanel: routeInfo[0],
+        hashHandler: routeInfo[2],
+      };
     }
-
-    parentRoute = lce[1];
-    const currentPanel = lce[0];
-    if (index == 0) {
-      fun = lce[2];
-    }
-    if (index == location.length - 1) {
-      showPanel(currentPanel);
-    }
-  });
-
-  return fun;
+  }
 }
 
 function showPanel(newPanel: HTMLDivElement, animation = true) {
