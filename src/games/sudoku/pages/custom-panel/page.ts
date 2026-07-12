@@ -6,6 +6,7 @@ import { changeHash } from "../../utils/event.js";
 import { modifyInputDiv } from "../../components/material-input/input.js";
 
 import { createSourceBoard, gameState } from "../../core/sudoku.js";
+import { createActionBtn } from "../../../../components/action-btn/script";
 
 export const customPanel = createElement("div", {
   id: "custom-panel",
@@ -70,18 +71,10 @@ const sourceInput = createElement("input", {
 modifyInputDiv(sourceInput, sourceInputDiv);
 sourceInputDiv.append(sourceLabel, sourceInput);
 
-const createBtn = createElement(
-  "button",
-  {
-    title: "Create",
-    id: "create-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("p", { textContent: "Next" }),
-    createElement("i", { className: "ph-bold ph-arrow-right" }),
-  ]
-);
+const createBtn = createActionBtn("ph-bold ph-arrow-right", "Next", {
+  size: "large",
+  center: "x",
+});
 
 createBtn.addEventListener("click", () => {
   const source = sourceInput.value;
