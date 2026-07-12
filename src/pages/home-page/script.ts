@@ -66,7 +66,7 @@ const gameData: Record<
   sudoku: {
     name: "Sudoku",
     description: "A classic number puzzle game.",
-    url: "/sudoku",
+    url: "sudoku/",
   },
   "tic-tac-toe": {
     name: "Tic-Tac-Toe",
