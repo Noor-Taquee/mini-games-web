@@ -49,8 +49,8 @@ panelBar.append(panelNameDiv, helpBtn);
 //#endregion panel Bar
 
 //#region content
-const contentDiv = createElement("div", {
-  className: "content-div",
+const panelContent = createElement("div", {
+  className: "panel-content",
   id: "source-input-div",
 });
 
@@ -113,7 +113,7 @@ createBtn.addEventListener("click", () => {
   document.dispatchEvent(new CustomEvent("render-board"));
 });
 
-contentDiv.append(sourceInputDiv, createBtn);
+panelContent.append(sourceInputDiv, createBtn);
 //#endregion content
 
-customPanel.append(panelBar, contentDiv);
+customPanel.append(panelBar, panelContent);

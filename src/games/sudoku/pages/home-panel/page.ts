@@ -33,8 +33,8 @@ panelBar.append(gameName, accountBtn);
 //#endregion panel bar
 
 //#region content
-const contentDiv = createElement("div", {
-  className: "content-div",
+const panelContent = createElement("div", {
+  className: "panel-content",
 });
 
 const playBtn = createElement(
@@ -109,7 +109,7 @@ const settingsBtn = createElement(
 );
 settingsBtn.addEventListener("click", () => changeHash("settings"));
 
-contentDiv.append(playBtn, customBtn);
+panelContent.append(playBtn, customBtn);
 //#endregion content
 
-homePanel.append(panelBar, contentDiv);
+homePanel.append(panelBar, panelContent);
