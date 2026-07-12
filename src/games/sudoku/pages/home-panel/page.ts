@@ -1,9 +1,12 @@
 import "./home-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { dosukuApi, type DosukuData } from "../../api/dosuku.js";
 import { changeHash } from "../../utils/event";
+
 import { createActionBtn } from "../../../../components/action-btn/script";
+import { createToggleBtn } from "../../../../components/toggle-btn/script";
+
+import { dosukuApi, type DosukuData } from "../../api/dosuku.js";
 
 export const homePanel = createElement("div", {
   id: "home-panel",
@@ -20,15 +23,9 @@ const gameName = createElement("p", {
   textContent: "sudoku",
 });
 
-const accountBtn = createElement(
-  "button",
-  {
-    title: "Settings",
-    id: "settings-btn",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-user" })]
-);
+const accountBtn = createToggleBtn("ph-bold ph-user");
+accountBtn.title = "Settings";
+accountBtn.id = "settings-btn";
 
 panelBar.append(gameName, accountBtn);
 //#endregion panel bar

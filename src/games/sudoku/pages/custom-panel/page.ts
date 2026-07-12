@@ -7,6 +7,7 @@ import { modifyInputDiv } from "../../components/material-input/input.js";
 
 import { createSourceBoard, gameState } from "../../core/sudoku.js";
 import { createActionBtn } from "../../../../components/action-btn/script";
+import { createToggleBtn } from "../../../../components/toggle-btn/script";
 
 export const customPanel = createElement("div", {
   id: "custom-panel",
@@ -21,30 +22,20 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-const backBtn = createElement(
-  "button",
-  {
-    title: "Back",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-caret-left" })]
-);
+
+const backBtn = createToggleBtn("ph-bold ph-caret-left");
+backBtn.title = "Back";
+backBtn.addEventListener("click", () => changeHash("home"));
+
 const gameName = createElement("p", {
   className: "panel-name",
   textContent: "sudoku",
 });
+
 panelNameDiv.append(backBtn, gameName);
 
-backBtn.addEventListener("click", () => changeHash("home"));
-
-const helpBtn = createElement(
-  "button",
-  {
-    title: "Help",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-question-mark" })]
-);
+const helpBtn = createToggleBtn("ph-bold ph-question-mark");
+helpBtn.title = "Help";
 
 panelBar.append(panelNameDiv, helpBtn);
 //#endregion panel Bar
