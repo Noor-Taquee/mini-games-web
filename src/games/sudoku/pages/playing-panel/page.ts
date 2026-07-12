@@ -1,7 +1,7 @@
 import "./playing-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event.js";
+import { changeHash, eventBus } from "../../utils/event.js";
 
 import { createActionBtn } from "../../../../components/action-btn/script";
 import { createToggleBtn } from "../../../../components/toggle-btn/script";
@@ -102,7 +102,7 @@ function stopTimer() {
   clearInterval(timerInterval);
 }
 
-document.addEventListener("game-started", startTimer);
+eventBus.addEventListener("game-started", startTimer);
 //#endregion Timer
 
 panelBar.append(panelNameDiv, timerDiv);
@@ -165,7 +165,7 @@ function setProgress(value: number, max = 81) {
   progressNumber.textContent = `${value}/${max}`;
 }
 
-document.addEventListener("game-progress", (e) => {
+eventBus.addEventListener("game-progress", (e) => {
   setProgress((e as CustomEvent).detail.progress);
 });
 
@@ -212,7 +212,7 @@ export function prepareBoard() {
     createElement("p", { textContent: "loading" })
   );
 }
-document.addEventListener("prepare-board", prepareBoard);
+eventBus.addEventListener("prepare-board", prepareBoard);
 
 // MARK: Start New Game
 export function renderBoard() {
@@ -229,7 +229,7 @@ export function renderBoard() {
   difficultyValue.textContent = gameState.boardState?.difficulty ?? null;
   calculateProgress();
 }
-document.addEventListener("render-board", renderBoard);
+eventBus.addEventListener("render-board", renderBoard);
 
 // MARK: Clear Board
 export function clearBoard() {
@@ -242,17 +242,17 @@ export function clearBoard() {
   boardContainer.innerHTML = "";
   setProgress(0);
 }
-document.addEventListener("clear-board", clearBoard);
+eventBus.addEventListener("clear-board", clearBoard);
 
 // MARK: Reset Board
 export function resetBoard() {
   clearBoard();
   renderBoard();
 }
-document.addEventListener("reset-board", resetBoard);
+eventBus.addEventListener("reset-board", resetBoard);
 
 // MARK: Show Error
-document.addEventListener("show-board-error", () => {
+eventBus.addEventListener("show-board-error", () => {
   difficultyValue.classList.remove("scan-loading");
   boardContainer.classList.remove("scan-loading");
   boardContainer.classList.add("load-error");
@@ -273,7 +273,7 @@ document.addEventListener("show-board-error", () => {
     () => {
       if (!boardContainer.classList.contains("load-error")) return;
 
-      document.dispatchEvent(new Event("retry-board-api"));
+      eventBus.dispatchEvent(new Event("retry-board-api"));
     },
     { once: true }
   );
@@ -306,7 +306,7 @@ export function hashHandler(attr: string[]) {
 
   const solution = solveSudoku(puzzle);
   if (!solution) {
-    document.dispatchEvent(
+    eventBus.dispatchEvent(
       new CustomEvent("show-board-error", {
         detail: {
           message: "The puzzle is not valid.",
@@ -326,6 +326,6 @@ export function hashHandler(attr: string[]) {
     mistakes: 0,
     history: [],
   };
-  document.dispatchEvent(new Event("render-board"));
+  eventBus.dispatchEvent(new Event("render-board"));
 }
 //#endregion hashHandler

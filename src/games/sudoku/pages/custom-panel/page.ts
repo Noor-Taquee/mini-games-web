@@ -1,7 +1,7 @@
 import "./custom-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event.js";
+import { changeHash, eventBus } from "../../utils/event.js";
 
 import { modifyInputDiv } from "../../components/material-input/input.js";
 
@@ -82,7 +82,7 @@ createBtn.addEventListener("click", () => {
     return;
   }
 
-  document.dispatchEvent(new Event("prepare-board"));
+  eventBus.dispatchEvent(new Event("prepare-board"));
 
   const dSource = createSourceBoard(source);
 
@@ -94,7 +94,7 @@ createBtn.addEventListener("click", () => {
     mistakes: 0,
     history: [],
   };
-  document.dispatchEvent(new CustomEvent("render-board"));
+  eventBus.dispatchEvent(new CustomEvent("render-board"));
 });
 
 panelContent.append(sourceInputDiv, createBtn);
