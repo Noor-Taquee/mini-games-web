@@ -1,12 +1,12 @@
 .action-btn {
-  --height: 45px;
   cursor: pointer;
   touch-action: manipulation;
 
   height: var(--height);
   width: fit-content;
 
-  padding: 0 12px;
+  margin: 10px 0;
+  padding: 0 var(--padding);
 
   border: none;
   border-radius: calc(var(--height) / 2);
@@ -14,15 +14,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--gap);
 
   background-color: var(--primary-text-color);
   p {
     color: var(--primary-bg);
-    font: var(--primary-font);
   }
   i {
     color: var(--primary-bg);
-    font-size: var(--toggle-icon-size);
+  }
+
+  &.small {
+    --height: 45px;
+    --gap: 8px;
+    --padding: 12px;
+    p {
+      font: var(--primary-font);
+    }
+    i {
+      font-size: var(--toggle-icon-size);
+    }
+  }
+  &.large {
+    --height: 60px;
+    --gap: 12px;
+    --padding: 16px;
+    p {
+      font: var(--secondary-header-font);
+    }
+    i {
+      font-size: var(--toggle-icon-size);
+    }
+  }
+  &.center-x {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.center-y {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  &.center-both {
+    margin: auto;
   }
 }
