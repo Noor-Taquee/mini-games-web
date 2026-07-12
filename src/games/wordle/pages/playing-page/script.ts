@@ -3,9 +3,10 @@ import "./style.css";
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event.js";
 
+import { createToggleBtn } from "../../../../components/toggle-btn/script";
+
 import { attemptBoxFrame } from "../../core/engine.js";
 import { keyboard } from "../../components/keyboard/script.js";
-import { createToggleBtn } from "../../../../components/toggle-btn/script";
 
 export const playingPanel = createElement("div", {
   id: "attempt-panel",
@@ -40,11 +41,9 @@ const gameName = createElement(
 );
 panelNameDiv.append(backBtn, gameName);
 
-const accountBtn = createElement("button", {
-  title: "Account",
-  id: "account-btn",
-  className: "toggle-btn",
-});
+const accountBtn = createToggleBtn("ph-bold ph-user");
+accountBtn.title = "Account";
+accountBtn.id = "account-btn";
 accountBtn.addEventListener("click", () => {
   changeHash("home");
 });
