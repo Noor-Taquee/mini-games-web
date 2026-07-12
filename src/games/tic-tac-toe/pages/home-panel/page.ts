@@ -3,6 +3,9 @@ import "./home-panel.css";
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event";
 
+import { createActionBtn } from "../../../../components/action-btn/script.js";
+import { createToggleBtn } from "../../../../components/toggle-btn/script.js";
+
 export const homePanel = createElement("div", {
   id: "home-panel",
   className: "app-panel",
@@ -18,15 +21,9 @@ const panelName = createElement("p", {
   textContent: "tic-tac-toe",
 });
 
-const accountBtn = createElement(
-  "button",
-  {
-    title: "Settings",
-    id: "settings-btn",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-gear-fine" })]
-);
+const accountBtn = createToggleBtn("ph-bold ph-gear-fine");
+accountBtn.id = "account-btn";
+accountBtn.title = "Settings";
 
 panelBar.append(panelName, accountBtn);
 //#endregion panel bar
@@ -36,33 +33,19 @@ const panelContent = createElement("div", {
   className: "panel-content",
 });
 
-const playBtn = createElement(
-  "button",
-  {
-    id: "daily-puzzle-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-play" }),
-    createElement("p", { textContent: "Play" }),
-  ]
-);
+const playBtn = createActionBtn("ph-fill ph-play", "Play", {
+  size: "large",
+  center: "x",
+});
 playBtn.addEventListener("click", () => {
   changeHash("playing");
   document.dispatchEvent(new Event("new-game"));
 });
 
-const settingsBtn = createElement(
-  "button",
-  {
-    id: "settings-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-gear" }),
-    createElement("p", { textContent: "Settings" }),
-  ]
-);
+const settingsBtn = createActionBtn("ph-fill ph-gear", "Settings", {
+  size: "large",
+  center: "x",
+});
 settingsBtn.addEventListener("click", () => {
   changeHash("settings");
 });
