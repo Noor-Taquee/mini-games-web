@@ -1,6 +1,8 @@
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event.js";
 
+import { createActionBtn } from "../../../../components/action-btn/script.js";
+
 export const homePanel = createElement("div", {
   id: "home-panel",
   className: "app-panel",
@@ -26,20 +28,10 @@ const panelContent = createElement("div", {
   className: "panel-content",
 });
 
-const playBtn = createElement(
-  "button",
-  {
-    title: "Play",
-    id: "play-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-play" }),
-    createElement("p", {
-      textContent: "play",
-    }),
-  ]
-);
+const playBtn = createActionBtn("ph-fill ph-play", "play", {
+  size: "large",
+  center: "x",
+});
 playBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("new-game"));
   changeHash("playing");
