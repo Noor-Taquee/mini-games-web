@@ -3,6 +3,8 @@ import "./playing-panel.css";
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event.js";
 
+import { createToggleBtn } from "../../../../components/toggle-btn/script.js";
+
 import { gameState } from "../../core/handler.js";
 
 export const playingPanel = createElement("div", {
@@ -18,14 +20,13 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-const backBtn = createElement(
-  "button",
-  {
-    title: "Back",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-caret-left" })]
-);
+
+const backBtn = createToggleBtn("ph-bold ph-caret-left");
+backBtn.title = "Back";
+backBtn.addEventListener("click", () => {
+  changeHash("home");
+});
+
 const panelName = createElement("p", {
   className: "panel-name",
   textContent: "tic-tac-toe",
@@ -40,15 +41,11 @@ const utilityDiv = createElement("div", {
   className: "utility-div",
 });
 
-const undoBtn = createElement(
-  "button",
-  {
-    title: "Undo",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-arrow-arc-left" })]
-);
-undoBtn.addEventListener("click", () => {
+const undoBtn = createToggleBtn("ph-bold ph-arrow-arc-left");
+undoBtn.title = "Undo";
+undoBtn.addEventListener("click", undo);
+
+function undo() {
   if (!gameState.boardState || gameState.boardState.history.length <= 0) return;
 
   const box = playingBox.querySelector<HTMLDivElement>(
@@ -57,16 +54,10 @@ undoBtn.addEventListener("click", () => {
   if (!box) return;
   emptyBox(box);
   gameState.boardState.swapSign();
-});
+}
 
-const replayBtn = createElement(
-  "button",
-  {
-    title: "Reset",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-arrow-counter-clockwise" })]
-);
+const replayBtn = createToggleBtn("ph-bold ph-arrow-counter-clockwise");
+replayBtn.title = "Reset";
 replayBtn.addEventListener("click", () => {
   document.dispatchEvent(new Event("reset-game"));
 });
