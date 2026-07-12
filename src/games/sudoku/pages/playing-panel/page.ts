@@ -3,7 +3,10 @@ import "./playing-panel.css";
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event.js";
 
+import { createActionBtn } from "../../../../components/action-btn/script";
+import { createToggleBtn } from "../../../../components/toggle-btn/script";
 import { numpad } from "../../components/numpad/numpad.js";
+
 import {
   calculateProgress,
   createSourceBoard,
@@ -12,7 +15,6 @@ import {
   showBoard,
 } from "../../core/sudoku.js";
 import { solveSudoku } from "../../services/solver.js";
-import { createActionBtn } from "../../../../components/action-btn/script";
 
 export const playingPanel = createElement("div", {
   id: "playing-panel",
@@ -27,14 +29,8 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-const backBtn = createElement(
-  "button",
-  {
-    title: "Back",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-caret-left" })]
-);
+const backBtn = createToggleBtn("ph-bold ph-caret-left");
+backBtn.title = "Back";
 const gameName = createElement("p", {
   className: "panel-name",
   textContent: "sudoku",
