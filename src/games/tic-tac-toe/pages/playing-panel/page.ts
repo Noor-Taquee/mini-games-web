@@ -33,10 +33,6 @@ const panelName = createElement("p", {
 });
 panelNameDiv.append(backBtn, panelName);
 
-backBtn.addEventListener("click", () => {
-  changeHash("home");
-});
-
 const utilityDiv = createElement("div", {
   className: "utility-div",
 });

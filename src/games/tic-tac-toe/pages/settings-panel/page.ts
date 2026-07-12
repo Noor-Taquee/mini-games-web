@@ -1,6 +1,8 @@
 import { createElement } from "../../utils/create-dom.js";
 import { changeHash } from "../../utils/event.js";
 
+import { createToggleBtn } from "../../../../components/toggle-btn/script.js";
+
 export const settingsPanel = createElement("div", {
   id: "settings-panel",
   className: "app-panel",
@@ -14,14 +16,8 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-const backBtn = createElement(
-  "button",
-  {
-    title: "Back",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-caret-left" })]
-);
+const backBtn = createToggleBtn("ph-bold ph-caret-left");
+backBtn.title = "Back";
 const panelName = createElement("p", {
   className: "panel-name",
   textContent: "settings",
