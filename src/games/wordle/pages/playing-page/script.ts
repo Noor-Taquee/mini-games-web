@@ -5,6 +5,7 @@ import { changeHash } from "../../utils/event.js";
 
 import { attemptBoxFrame } from "../../core/engine.js";
 import { keyboard } from "../../components/keyboard/script.js";
+import { createToggleBtn } from "../../../../components/toggle-btn/script";
 
 export const playingPanel = createElement("div", {
   id: "attempt-panel",
@@ -19,14 +20,12 @@ const panelBar = createElement("div", {
 const panelNameDiv = createElement("div", {
   className: "panel-name-div",
 });
-const backBtn = createElement(
-  "button",
-  {
-    title: "Back",
-    className: "toggle-btn",
-  },
-  [createElement("i", { className: "ph-bold ph-caret-left" })]
-);
+const backBtn = createToggleBtn("ph-bold ph-caret-left");
+backBtn.title = "Back";
+backBtn.addEventListener("click", () => {
+  changeHash("home");
+});
+
 const gameName = createElement(
   "p",
   {
@@ -40,10 +39,6 @@ const gameName = createElement(
   // ],
 );
 panelNameDiv.append(backBtn, gameName);
-
-backBtn.addEventListener("click", () => {
-  changeHash("home");
-});
 
 const accountBtn = createElement("button", {
   title: "Account",
