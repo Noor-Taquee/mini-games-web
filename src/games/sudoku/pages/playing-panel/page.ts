@@ -112,8 +112,8 @@ panelBar.append(panelNameDiv, timerDiv);
 //#endregion panel Bar
 
 //#region content
-const contentDiv = createElement("div", {
-  className: "content-div",
+const panelContent = createElement("div", {
+  className: "panel-content",
 });
 
 export const boardContainer = createElement("div", { id: "board-container" });
@@ -188,7 +188,7 @@ const startBtn = createElement(
 
 startBtn.addEventListener("click", () => {
   if (!showBoard()) return;
-  contentDiv.replaceChild(numpad, startBtn);
+  panelContent.replaceChild(numpad, startBtn);
 
   requestAnimationFrame(() => {
     numpad.classList.add("anim-slide-in-bottom");
@@ -202,10 +202,10 @@ startBtn.addEventListener("click", () => {
   });
 });
 
-contentDiv.append(boardContainer, infoDiv, startBtn);
+panelContent.append(boardContainer, infoDiv, startBtn);
 //#endregion content
 
-playingPanel.append(panelBar, contentDiv);
+playingPanel.append(panelBar, panelContent);
 
 // MARK: Prepare Board
 export function prepareBoard() {
@@ -245,8 +245,8 @@ document.addEventListener("render-board", renderBoard);
 export function clearBoard() {
   boardContainer.classList.remove("load-error");
   resetTimer();
-  if (contentDiv.contains(numpad)) {
-    contentDiv.replaceChild(startBtn, numpad);
+  if (panelContent.contains(numpad)) {
+    panelContent.replaceChild(startBtn, numpad);
   }
   difficultyValue.textContent = "";
   boardContainer.innerHTML = "";
