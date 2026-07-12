@@ -10,3 +10,5 @@ export function changeRoute(newRoute: string): void {
   });
   app.dispatchEvent(event);
 }
+
+export const eventBus = new EventTarget();
