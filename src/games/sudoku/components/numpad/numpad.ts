@@ -1,6 +1,7 @@
 import "./numpad.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { eventBus } from "../../utils/event";
 
 export const numpad = createElement("div", {
   id: "numpad",
@@ -22,7 +23,7 @@ function createNumpadBtn(
     ]
   );
   btn.addEventListener("click", () => {
-    document.dispatchEvent(
+    eventBus.dispatchEvent(
       new KeyboardEvent("keydown", {
         key: value!,
         bubbles: true,

@@ -1,4 +1,5 @@
 import { createElement } from "../utils/create-dom.js";
+import { eventBus } from "../utils/event.js";
 
 export type BoardData =
   "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | null;
@@ -144,7 +145,7 @@ export function showBoard(): boolean {
         "animationend",
         () => {
           board.classList.remove("revealing-second-half");
-          document.dispatchEvent(new Event("game-started"));
+          eventBus.dispatchEvent(new Event("game-started"));
         },
         { once: true }
       );
@@ -309,7 +310,7 @@ export function calculateProgress(show = true) {
 }
 
 function showProgress(progress: number) {
-  document.dispatchEvent(
+  eventBus.dispatchEvent(
     new CustomEvent("game-progress", {
       detail: {
         progress: progress,
@@ -320,19 +321,31 @@ function showProgress(progress: number) {
 
 //#endregion Logic
 
-document.addEventListener("keydown", (e) => {
-  if (e.key >= "1" && e.key <= "9") {
-    addEntry(e.key);
-  } else if (e.key === "Backspace" || e.key === "Delete") {
+window.addEventListener("keydown", (e) => {
+  eventBus.dispatchEvent(
+    new KeyboardEvent("keydown", {
+      key: e.key,
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+});
+
+eventBus.addEventListener("keydown", (e) => {
+  const keyEvent = e as KeyboardEvent;
+
+  if (keyEvent.key >= "1" && keyEvent.key <= "9") {
+    addEntry(keyEvent.key);
+  } else if (keyEvent.key === "Backspace" || keyEvent.key === "Delete") {
     removeEntry();
-  } else if (e.key.startsWith("Arrow")) {
-    e.preventDefault();
+  } else if (keyEvent.key.startsWith("Arrow")) {
+    keyEvent.preventDefault();
     const dirMap: Record<string, "u" | "d" | "l" | "r"> = {
       ArrowUp: "u",
       ArrowDown: "d",
       ArrowLeft: "l",
       ArrowRight: "r",
     };
-    moveFocus(dirMap[e.key]!);
+    moveFocus(dirMap[keyEvent.key]!);
   }
 });

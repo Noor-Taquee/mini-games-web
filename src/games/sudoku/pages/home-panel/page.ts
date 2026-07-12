@@ -1,7 +1,7 @@
 import "./home-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event";
+import { changeHash, eventBus } from "../../utils/event";
 
 import { createActionBtn } from "../../../../components/action-btn/script";
 import { createToggleBtn } from "../../../../components/toggle-btn/script";
@@ -48,7 +48,7 @@ async function fetchPuzzle() {
   puzzleFetchController.abort();
 
   puzzleFetchController = new AbortController();
-  document.dispatchEvent(new Event("prepare-board"));
+  eventBus.dispatchEvent(new Event("prepare-board"));
 
   try {
     const response = await fetch(dosukuApi, {
@@ -58,7 +58,7 @@ async function fetchPuzzle() {
 
     const source = data.newboard.grids[0];
     if (!source) {
-      document.dispatchEvent(new CustomEvent("show-board-error"));
+      eventBus.dispatchEvent(new CustomEvent("show-board-error"));
       return;
     }
 
@@ -69,11 +69,11 @@ async function fetchPuzzle() {
     );
   } catch (er: unknown) {
     if (er instanceof Error && er.name == "AbortError") return;
-    document.dispatchEvent(new CustomEvent("show-board-error"));
+    eventBus.dispatchEvent(new CustomEvent("show-board-error"));
   }
 }
 
-document.addEventListener("retry-board-api", fetchPuzzle);
+eventBus.addEventListener("retry-board-api", fetchPuzzle);
 
 const customBtn = createActionBtn("ph-fill ph-note-pencil", "Custom", {
   size: "large",
