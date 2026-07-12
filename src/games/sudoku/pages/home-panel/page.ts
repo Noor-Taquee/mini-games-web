@@ -3,6 +3,7 @@ import "./home-panel.css";
 import { createElement } from "../../utils/create-dom.js";
 import { dosukuApi, type DosukuData } from "../../api/dosuku.js";
 import { changeHash } from "../../utils/event";
+import { createActionBtn } from "../../../../components/action-btn/script";
 
 export const homePanel = createElement("div", {
   id: "home-panel",
@@ -37,17 +38,11 @@ const panelContent = createElement("div", {
   className: "panel-content",
 });
 
-const playBtn = createElement(
-  "button",
-  {
-    id: "daily-puzzle-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-play" }),
-    createElement("p", { textContent: "Play" }),
-  ]
-);
+const playBtn = createActionBtn("ph-fill ph-play", "Play", {
+  size: "large",
+  center: "x",
+});
+
 playBtn.addEventListener("click", fetchPuzzle);
 
 export let puzzleFetchController = new AbortController();
@@ -83,30 +78,16 @@ async function fetchPuzzle() {
 
 document.addEventListener("retry-board-api", fetchPuzzle);
 
-const customBtn = createElement(
-  "button",
-  {
-    id: "custom-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-note-pencil" }),
-    createElement("p", { textContent: "Custom" }),
-  ]
-);
+const customBtn = createActionBtn("ph-fill ph-note-pencil", "Custom", {
+  size: "large",
+  center: "x",
+});
 customBtn.addEventListener("click", () => changeHash("custom"));
 
-const settingsBtn = createElement(
-  "button",
-  {
-    id: "settings-btn",
-    className: "action-btn",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-gear" }),
-    createElement("p", { textContent: "Settings" }),
-  ]
-);
+const settingsBtn = createActionBtn("ph-fill ph-gear", "Settings", {
+  size: "large",
+  center: "x",
+});
 settingsBtn.addEventListener("click", () => changeHash("settings"));
 
 panelContent.append(playBtn, customBtn);

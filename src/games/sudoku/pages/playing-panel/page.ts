@@ -12,6 +12,7 @@ import {
   showBoard,
 } from "../../core/sudoku.js";
 import { solveSudoku } from "../../services/solver.js";
+import { createActionBtn } from "../../../../components/action-btn/script";
 
 export const playingPanel = createElement("div", {
   id: "playing-panel",
@@ -174,17 +175,10 @@ document.addEventListener("game-progress", (e) => {
 
 infoDiv.append(difficultyTextDiv, progressDiv);
 
-const startBtn = createElement(
-  "button",
-  {
-    id: "start-btn",
-    className: "action-btn centered",
-  },
-  [
-    createElement("i", { className: "ph-fill ph-play" }),
-    createElement("p", { textContent: "start" }),
-  ]
-);
+const startBtn = createActionBtn("ph-fill ph-play", "start", {
+  size: "large",
+  center: "both",
+});
 
 startBtn.addEventListener("click", () => {
   if (!showBoard()) return;
