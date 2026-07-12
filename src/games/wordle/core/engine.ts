@@ -1,5 +1,6 @@
 import { checkWord } from "../services/checkWord.js";
 import { createElement } from "../utils/create-dom.js";
+import { eventBus } from "../utils/event.js";
 
 export const gameState = {
   /** 1 based indexing */
@@ -155,7 +156,7 @@ async function handleEnter(row = gameState.playerCurrentPosition.row) {
       report = "wrong";
     }
 
-    document.dispatchEvent(
+    eventBus.dispatchEvent(
       new CustomEvent("entry-report", {
         detail: {
           report: report,
@@ -173,7 +174,7 @@ async function handleEnter(row = gameState.playerCurrentPosition.row) {
   moveFocus(0);
 }
 
-document.addEventListener("entry-report", (ev) => {
+eventBus.addEventListener("entry-report", (ev) => {
   const e = ev as CustomEvent<{
     report: string;
     position: {
@@ -215,30 +216,42 @@ document.addEventListener("entry-report", (ev) => {
   );
 });
 
-document.addEventListener("keydown", (event) => {
-  event.preventDefault();
-  const keypress = event.key.toLowerCase();
+window.addEventListener("keydown", (event) => {
+  eventBus.dispatchEvent(
+    new KeyboardEvent("keydown", {
+      key: event.key,
+      bubbles: true,
+      cancelable: true,
+    })
+  );
+});
+
+eventBus.addEventListener("keydown", (event) => {
+  const keyEvent = event as KeyboardEvent;
+  keyEvent.preventDefault();
+
+  const keypress = keyEvent.key.toLowerCase();
   if (keypress.length == 1 && keypress >= "a" && keypress <= "z") {
     addEntry(keypress);
-  } else if (event.key === "Backspace") {
+  } else if (keyEvent.key === "Backspace") {
     removeEntry();
-  } else if (event.key === "Enter") {
+  } else if (keyEvent.key === "Enter") {
     handleEnter();
-  } else if (event.key == "ArrowLeft") {
+  } else if (keyEvent.key == "ArrowLeft") {
     moveFocus(-1);
-  } else if (event.key == "ArrowRight") {
+  } else if (keyEvent.key == "ArrowRight") {
     moveFocus(1);
   }
 });
 
-document.addEventListener("delete-letter", () => {
+eventBus.addEventListener("delete-letter", () => {
   removeEntry();
 });
 
-document.addEventListener("enter-attempt", () => {
+eventBus.addEventListener("enter-attempt", () => {
   handleEnter();
 });
 
-document.addEventListener("new-game", () => {
+eventBus.addEventListener("new-game", () => {
   createAttemptPanel();
 });

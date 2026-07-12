@@ -1,6 +1,7 @@
 import "./style.css";
 
 import { createElement } from "../../utils/create-dom.js";
+import { eventBus } from "../../utils/event.js";
 
 export const keyboard = createElement("div", {
   id: "keyboard",
@@ -24,7 +25,7 @@ keysLayout.forEach((keysRow) => {
       [createElement("p", { textContent: label })]
     );
     key.addEventListener("click", () => {
-      document.dispatchEvent(
+      eventBus.dispatchEvent(
         new KeyboardEvent("keydown", {
           key: label,
           bubbles: true,
@@ -48,7 +49,7 @@ const deleteBtn = createElement(
   [createElement("i", { className: "ph-bold ph-backspace" })]
 );
 deleteBtn.addEventListener("click", () => {
-  document.dispatchEvent(new Event("delete-letter"));
+  eventBus.dispatchEvent(new Event("delete-letter"));
 });
 
 const enterBtn = createElement(
@@ -59,7 +60,7 @@ const enterBtn = createElement(
   [createElement("i", { className: "ph-bold ph-key-return" })]
 );
 enterBtn.addEventListener("click", () => {
-  document.dispatchEvent(new Event("enter-attempt"));
+  eventBus.dispatchEvent(new Event("enter-attempt"));
 });
 
 row.append(enterBtn, deleteBtn);
@@ -70,4 +71,4 @@ function resetKeyboard() {
     key.className = "key";
   });
 }
-document.addEventListener("reset-keyboard", resetKeyboard);
+eventBus.addEventListener("reset-keyboard", resetKeyboard);

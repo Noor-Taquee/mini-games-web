@@ -1,5 +1,5 @@
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event.js";
+import { changeHash, eventBus } from "../../utils/event.js";
 
 import { createActionBtn } from "../../../../components/action-btn/script.js";
 
@@ -33,7 +33,7 @@ const playBtn = createActionBtn("ph-fill ph-play", "play", {
   center: "x",
 });
 playBtn.addEventListener("click", () => {
-  document.dispatchEvent(new Event("new-game"));
+  eventBus.dispatchEvent(new Event("new-game"));
   changeHash("playing");
 });
 panelContent.append(playBtn);
