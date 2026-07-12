@@ -1,3 +1,5 @@
+import { eventBus } from "../utils/event.js";
+
 export type BoardState = {
   currentState: string[][];
   currentSign: "x" | "circle";
@@ -13,7 +15,7 @@ export const gameState: GameState = {
   boardState: null,
 };
 
-document.addEventListener("new-game", () => {
+eventBus.addEventListener("new-game", () => {
   gameState.boardState = {
     currentState: [
       ["", "", ""],

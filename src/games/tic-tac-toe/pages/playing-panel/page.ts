@@ -1,7 +1,7 @@
 import "./playing-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event.js";
+import { changeHash, eventBus } from "../../utils/event.js";
 
 import { createToggleBtn } from "../../../../components/toggle-btn/script.js";
 
@@ -55,7 +55,7 @@ function undo() {
 const replayBtn = createToggleBtn("ph-bold ph-arrow-counter-clockwise");
 replayBtn.title = "Reset";
 replayBtn.addEventListener("click", () => {
-  document.dispatchEvent(new Event("reset-game"));
+  eventBus.dispatchEvent(new Event("reset-game"));
 });
 
 utilityDiv.append(undoBtn, replayBtn);
@@ -140,7 +140,7 @@ panelContent.append(playingBox);
 
 playingPanel.append(panelBar, panelContent);
 
-document.addEventListener("reset-game", () => {
+eventBus.addEventListener("reset-game", () => {
   if (!gameState.boardState) return;
 
   resetBoard2();
@@ -148,6 +148,6 @@ document.addEventListener("reset-game", () => {
   gameState.boardState.currentSign = "x";
 });
 
-document.addEventListener("new-game", () => {
+eventBus.addEventListener("new-game", () => {
   resetBoard();
 });

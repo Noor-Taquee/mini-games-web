@@ -1,7 +1,7 @@
 import "./home-panel.css";
 
 import { createElement } from "../../utils/create-dom.js";
-import { changeHash } from "../../utils/event";
+import { changeHash, eventBus } from "../../utils/event";
 
 import { createActionBtn } from "../../../../components/action-btn/script.js";
 import { createToggleBtn } from "../../../../components/toggle-btn/script.js";
@@ -39,7 +39,7 @@ const playBtn = createActionBtn("ph-fill ph-play", "Play", {
 });
 playBtn.addEventListener("click", () => {
   changeHash("playing");
-  document.dispatchEvent(new Event("new-game"));
+  eventBus.dispatchEvent(new Event("new-game"));
 });
 
 const settingsBtn = createActionBtn("ph-fill ph-gear", "Settings", {
