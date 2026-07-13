@@ -1,4 +1,4 @@
-name: Build
+name: check PR
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  check-pr:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +24,11 @@ jobs:
       - name: Install Project Dependencies
         run: npm ci
 
-      - name: Build Production Files
+      - name: Format check
+        run: npm run format:check
+
+      - name: Lint check
+        run: npm run lint:check
+
+      - name: Build check
         run: npm run build
