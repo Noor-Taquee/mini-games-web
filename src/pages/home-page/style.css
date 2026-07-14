@@ -2,9 +2,10 @@
   --height: 50px;
   position: sticky;
   z-index: 1;
+  top: 0px;
   flex-shrink: 0;
   height: var(--height);
-  width: 90%;
+  width: calc(100% - 40px);
   max-width: 600px;
   margin: 0 auto;
   padding: 0 16px;
@@ -16,6 +17,7 @@
 
 #game-container {
   height: fit-content;
+  width: 100%;
   padding: 20px;
 
   display: grid;
