@@ -115,6 +115,10 @@ const panelContent = createElement("div", {
 
 export const boardContainer = createElement("div", { id: "board-container" });
 
+const controlPanel = createElement("div", {
+  className: "content",
+});
+
 const infoDiv = createElement("div", {
   id: "info-div",
   className: "",
@@ -178,7 +182,7 @@ const startBtn = createActionBtn("ph-fill ph-play", "start", {
 
 startBtn.addEventListener("click", () => {
   if (!showBoard()) return;
-  panelContent.replaceChild(numpad, startBtn);
+  controlPanel.replaceChild(numpad, startBtn);
 
   requestAnimationFrame(() => {
     numpad.classList.add("anim-slide-in-bottom");
@@ -192,7 +196,9 @@ startBtn.addEventListener("click", () => {
   });
 });
 
-panelContent.append(boardContainer, infoDiv, startBtn);
+controlPanel.append(infoDiv, startBtn);
+
+panelContent.append(boardContainer, controlPanel);
 //#endregion content
 
 playingPanel.append(panelBar, panelContent);
