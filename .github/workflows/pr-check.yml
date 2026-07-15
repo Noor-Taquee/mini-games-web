@@ -2,6 +2,17 @@ name: Pull Request Check
 
 on:
   pull_request:
+    paths:
+      - "public/**/*"
+      - "src/**/*"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "eslint.config.js"
+      - ".prettierrc"
+      - "vite.config.ts"
+      - ".github/workflows/*"
 
 permissions:
   contents: read
